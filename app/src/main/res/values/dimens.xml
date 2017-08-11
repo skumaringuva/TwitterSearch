@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">3dp</dimen>
+    <dimen name="margin_left_right">4dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+</resources>
