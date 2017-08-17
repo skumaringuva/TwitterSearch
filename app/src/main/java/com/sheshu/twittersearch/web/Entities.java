@@ -1,71 +1,76 @@
 package com.sheshu.twittersearch.web;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
-public class Entities implements Parcelable {
-    public final static Creator<Entities> CREATOR = new Creator<Entities>() {
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Entities createFromParcel(Parcel in) {
-            Entities instance = new Entities();
-            in.readList(instance.urls, (Object.class.getClassLoader()));
-            in.readList(instance.hashtags, (Hashtag.class.getClassLoader()));
-            in.readList(instance.userMentions, (Object.class.getClassLoader()));
-            return instance;
-        }
+import com.google.gson.annotations.SerializedName;
 
-        public Entities[] newArray(int size) {
-            return (new Entities[size]);
-        }
-    };
-    @SerializedName("urls")
-    @Expose
-    private List<Object> urls = null;
-    @SerializedName("hashtags")
-    @Expose
-    private List<Hashtag> hashtags = null;
-    @SerializedName("user_mentions")
-    @Expose
-    private List<Object> userMentions = null;
 
-    public List<Object> getUrls() {
-        return urls;
-    }
+public class Entities{
 
-    public void setUrls(List<Object> urls) {
-        this.urls = urls;
-    }
+	@SerializedName("urls")
+	private List<Object> urls;
 
-    public List<Hashtag> getHashtags() {
-        return hashtags;
-    }
+	@SerializedName("hashtags")
+	private List<Object> hashtags;
 
-    public void setHashtags(List<Hashtag> hashtags) {
-        this.hashtags = hashtags;
-    }
+	@SerializedName("media")
+	private List<MediaItem> media;
 
-    public List<Object> getUserMentions() {
-        return userMentions;
-    }
+	@SerializedName("user_mentions")
+	private List<UserMentionsItem> userMentions;
 
-    public void setUserMentions(List<Object> userMentions) {
-        this.userMentions = userMentions;
-    }
+	@SerializedName("symbols")
+	private List<Object> symbols;
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(urls);
-        dest.writeList(hashtags);
-        dest.writeList(userMentions);
-    }
+	public void setUrls(List<Object> urls){
+		this.urls = urls;
+	}
 
-    public int describeContents() {
-        return 0;
-    }
+	public List<Object> getUrls(){
+		return urls;
+	}
+
+	public void setHashtags(List<Object> hashtags){
+		this.hashtags = hashtags;
+	}
+
+	public List<Object> getHashtags(){
+		return hashtags;
+	}
+
+	public void setMedia(List<MediaItem> media){
+		this.media = media;
+	}
+
+	public List<MediaItem> getMedia(){
+		return media;
+	}
+
+	public void setUserMentions(List<UserMentionsItem> userMentions){
+		this.userMentions = userMentions;
+	}
+
+	public List<UserMentionsItem> getUserMentions(){
+		return userMentions;
+	}
+
+	public void setSymbols(List<Object> symbols){
+		this.symbols = symbols;
+	}
+
+	public List<Object> getSymbols(){
+		return symbols;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"Entities{" + 
+			"urls = '" + urls + '\'' + 
+			",hashtags = '" + hashtags + '\'' + 
+			",media = '" + media + '\'' + 
+			",user_mentions = '" + userMentions + '\'' + 
+			",symbols = '" + symbols + '\'' + 
+			"}";
+		}
 }

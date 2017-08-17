@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.sheshu.twittersearch.BuildConfig;
 import com.sheshu.twittersearch.model.AuthenticationPreferences;
@@ -23,7 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -38,6 +38,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Sheshu on 8/6/17.
  */
 public class TwitterController implements Callback<Tweets> {
+    public static final int SEARCH_TYPE_NORMAL = 0;
+    public static final int SEARCH_TYPE_EXACT = 1;
+    public static final int SEARCH_TYPE_OR = 2;
+    public static final int SEARCH_TYPE_NOT_KEYWORD = 3;
+    public static final int SEARCH_TYPE_HASH_TAG = 4; // like normal
+    public static final int SEARCH_TYPE_FROM_ACCOUNT = 5;
+    public static final int SEARCH_TYPE_FROM_LIST = 6;
+    public static final int SEARCH_TYPE_TO_ACCOUNT = 7;
+    public static final int SEARCH_TYPE_MENTION_ACCOUNT = 8;
+    public static final int SEARCH_TYPE_FILTER_SAFE = 9;
+    public static final int SEARCH_TYPE_FILTER_MEDIA = 10;
+    public static final int SEARCH_TYPE_FILTER_NATIVE_VIDEO = 11;
+    public static final int SEARCH_TYPE_FILTER_NO_RETWEETS = 12;
+    public static final int SEARCH_TYPE_FILTER_PERISCOPE = 13;
+    public static final int SEARCH_TYPE_FILTER_VINE = 14;
+    public static final int SEARCH_TYPE_FILTER_IMAGES = 15;
+    public static final int SEARCH_TYPE_FILTER_TWIMG = 16;
+    public static final int SEARCH_TYPE_FILTER_LINKS = 17;
+    public static final int SEARCH_TYPE_URL_KEYWORD = 18;
+    public static final int SEARCH_TYPE_FILTER_SINCE = 19;
+    public static final int SEARCH_TYPE_FILTER_UNTIL = 20;
+    public static final int SEARCH_TYPE_FILTER_NO_SCARY = 21; // -
+    public static final int SEARCH_TYPE_FILTER_POSITIVE_ATTITUDE = 22;
+    public static final int SEARCH_TYPE_FILTER_NEGATIVE_ATTITUDE = 23;
+    public static final int SEARCH_TYPE_FILTER_NEGATIVE_QUESTION = 24;
     private static final String TWITTER_BASE_URL = "https://api.twitter.com";
     private static final String TWITTER_TOKEN_URL = TWITTER_BASE_URL + "/oauth2/token";
     private static final String TAG = "TwitterController";
@@ -48,6 +73,88 @@ public class TwitterController implements Callback<Tweets> {
 
     public TwitterController(Context context) {
         mConext = context;
+    }
+
+    public static String addKeyword(int type, String arg1) {
+        String keyword = null;
+        switch (type) {
+            case SEARCH_TYPE_NORMAL:
+                keyword = arg1;
+                break;
+            case SEARCH_TYPE_EXACT:
+                keyword = "\"" + arg1 + "\"";
+                break;
+            case SEARCH_TYPE_OR:
+                keyword = "OR" + arg1;
+                break;
+            case SEARCH_TYPE_NOT_KEYWORD:
+                keyword = "-" + arg1;
+                break; //
+            case SEARCH_TYPE_HASH_TAG:   // IDENTIFY PREFIX #
+                keyword = arg1; // it is same as normal search with #keyword
+                break;
+            case SEARCH_TYPE_FROM_ACCOUNT:
+                keyword = "from:" + arg1;
+                break;
+            case SEARCH_TYPE_FROM_LIST:
+                keyword = "list:" + arg1;
+                break;
+            case SEARCH_TYPE_TO_ACCOUNT:
+                keyword = "to:" + arg1;
+                break;
+            case SEARCH_TYPE_MENTION_ACCOUNT:
+                keyword = arg1; // user will append @
+                break;
+            case SEARCH_TYPE_FILTER_SAFE:
+                keyword = "filter:safe";
+                break;
+            case SEARCH_TYPE_FILTER_MEDIA:
+                keyword = "filter:media";
+                break;
+            case SEARCH_TYPE_FILTER_NATIVE_VIDEO:
+                keyword = "filter:native_video";
+                break;
+            case SEARCH_TYPE_FILTER_NO_RETWEETS:
+                keyword = "-filter:retweets";
+                break;
+            case SEARCH_TYPE_FILTER_PERISCOPE:
+                keyword = "filter:periscope";
+                break;
+            case SEARCH_TYPE_FILTER_VINE:
+                keyword = "filter:vine";
+                break;
+            case SEARCH_TYPE_FILTER_IMAGES:
+                keyword = "filter:images";
+                break;
+            case SEARCH_TYPE_FILTER_TWIMG:
+                keyword = "filter:twimg";
+                break;
+            case SEARCH_TYPE_FILTER_LINKS:
+                keyword = "filter:links";
+                break;
+            case SEARCH_TYPE_URL_KEYWORD:
+                keyword = "url:" + arg1;
+                break;
+            case SEARCH_TYPE_FILTER_SINCE:
+                keyword = "since:" + arg1;
+                break;
+            case SEARCH_TYPE_FILTER_UNTIL:
+                keyword = "until:" + arg1;
+                break;
+            case SEARCH_TYPE_FILTER_NO_SCARY:
+                keyword = "-scary";
+                break;
+            case SEARCH_TYPE_FILTER_POSITIVE_ATTITUDE:
+                keyword = ":)";
+                break;
+            case SEARCH_TYPE_FILTER_NEGATIVE_ATTITUDE:
+                keyword = ":(";
+                break;
+            case SEARCH_TYPE_FILTER_NEGATIVE_QUESTION:
+                keyword = arg1; // user will add a question mark.
+                break;
+        }
+        return keyword;
     }
 
     public void login(TwitterNotifier notifier) {
@@ -62,13 +169,13 @@ public class TwitterController implements Callback<Tweets> {
         }
     }
 
-    public void searchTwitter(List<String> params) {
+    public void searchTwitter(SparseArray<String> params) {
         StringBuilder searchKey = new StringBuilder();
-        for (String key : params) {
+        for (int index = 0; index < params.size(); index++) {
             if (searchKey.length() != 0) {
                 searchKey.append(" ");
             }
-            searchKey.append(key);
+            searchKey.append(params.valueAt(index));
         }
         String searchKeyUrlEncoded = null;
         try {
@@ -77,7 +184,9 @@ public class TwitterController implements Callback<Tweets> {
             e.printStackTrace();
         }
         if (TextUtils.isEmpty(searchKeyUrlEncoded)) {
-            searchKeyUrlEncoded = "elephant";
+            mNotifier.searchError();
+        } else {
+            Log.e(TAG, "Search keyword: " + searchKey.toString());
         }
         final String token = mTokenType + " "
                 + mBearerToken;
@@ -92,7 +201,7 @@ public class TwitterController implements Callback<Tweets> {
                 .build();
         // prepare call in Retrofit 2.0
         TwitterApi api = retrofit.create(TwitterApi.class);
-        Call<Tweets> call = api.getSearchResults(token, searchKeyUrlEncoded);
+        Call<Tweets> call = api.getSearchResults(token, searchKey.toString());
         //asynchronous call
         call.enqueue(this);
     }
@@ -198,7 +307,7 @@ public class TwitterController implements Callback<Tweets> {
 
         public void readResponse(BufferedReader in) {
             String tmp = "";
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
             do {
                 try {
                     tmp = in.readLine();

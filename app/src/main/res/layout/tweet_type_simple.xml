@@ -120,22 +120,15 @@
 
                 />
 
-            <ImageView
-                android:id="@+id/shared_photo"
+            <LinearLayout
+                android:id="@+id/media_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/text_tweet_posted_image"
-                android:visibility="gone"
+                android:orientation="vertical">
 
-                />
-            <VideoView
-                android:id="@+id/shared_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/text_tweet_posted_video"
-                android:visibility="gone"
 
-                />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

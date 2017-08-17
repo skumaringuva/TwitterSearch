@@ -3,6 +3,7 @@ package com.sheshu.twittersearch.view;
 import android.content.Context;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.sheshu.twittersearch.R;
 import com.sheshu.twittersearch.Utils.Utils;
-import com.sheshu.twittersearch.web.Status;
+import com.sheshu.twittersearch.web.Entities;
+import com.sheshu.twittersearch.web.MediaItem;
+import com.sheshu.twittersearch.web.StatusesItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,20 +34,20 @@ class TweetStreamRecyclerAdapter extends RecyclerView.Adapter {
     private final Context mContext;
     private final View.OnClickListener mOnClickListener;
     final private SparseArrayCompat<String> mStringMap;
-    private List<Status> mItemList;
+    private List<StatusesItem> mItemList;
 
-    TweetStreamRecyclerAdapter(Context context, List<Status> reviewsList, View.OnClickListener onClickListener) {
+    TweetStreamRecyclerAdapter(Context context, List<StatusesItem> reviewsList, View.OnClickListener onClickListener) {
         mItemList = reviewsList;
         mStringMap = new SparseArrayCompat<>();
         mContext = context;
         mOnClickListener = onClickListener;
     }
 
-    ArrayList<Status> getItemList() {
-        return (ArrayList<Status>) mItemList;
+    ArrayList<StatusesItem> getItemList() {
+        return (ArrayList<StatusesItem>) mItemList;
     }
 
-    void setItemList(List<Status> reviewsList) {
+    void setItemList(List<StatusesItem> reviewsList) {
         mItemList = reviewsList;
         notifyDataSetChanged();
     }
@@ -67,18 +70,37 @@ class TweetStreamRecyclerAdapter extends RecyclerView.Adapter {
         //if (getItemViewType(position) == CARD_TYPE_SIMPLE)
         {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
-            Status status = mItemList.get(position);
+            StatusesItem status = mItemList.get(position);
             String userPhotoUrl = status.getUser().getProfileImageUrl();
             if (!TextUtils.isEmpty(userPhotoUrl)) {
                 Utils.makeImageRequest(mContext, myViewHolder.mUserPhoto, R.mipmap.ic_tweeter_place_holder, userPhotoUrl);
             }
-            List<Object> urls = status.getEntities().getUrls();
-            for (Object url : urls) {
-                Log.e(TAG, "URL: " + url);
+            myViewHolder.mMediaLayout.removeAllViews();
+            Entities entities = status.getEntities();
+            if (entities != null && entities.getMedia() != null) {
+                for (MediaItem item : entities.getMedia()) {
+                    // LinkedTreeMap<String, String> urlMap = (LinkedTreeMap<String, String>) url;
+                    if (item != null) {
+                        String mediaUrl = item.getMediaUrl();
+                        Log.e(TAG, "url: " + item.getUrl());
+                        Log.e(TAG, "expanded: " + item.getExpandedUrl());
+                        Log.e(TAG, "display: " + item.getDisplayUrl());
+                        if (!TextUtils.isEmpty(mediaUrl)) {
+                            ImageView imageView = new ImageView(mContext);
+                            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                            myViewHolder.mMediaLayout.addView(imageView,
+                                    new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                            Utils.makeImageRequest(mContext, imageView, R.mipmap.ic_tweeter_place_holder, mediaUrl);
+                        }
+                        Log.e(TAG, "Media url: " + item.getMediaUrl());
+                    }
+                }
             }
             myViewHolder.status.setText(status.getText());
             String rw = "" + status.getRetweetCount();
             myViewHolder.reTweetCount.setText(rw);
+            String favCount = "" + status.getUser().getFavouritesCount();
+            myViewHolder.favCount.setText(favCount);
             String userHandle = "@" + status.getUser().getScreenName();
             Log.d(TAG, "getProfileBackgroundColor: " + status.getUser().getProfileBackgroundColor() +
                     "backgroundImageUrl: " + status.getUser().getProfileBackgroundImageUrl()
@@ -123,8 +145,7 @@ class TweetStreamRecyclerAdapter extends RecyclerView.Adapter {
         TextView favCount;
         TextView replyCount;
         ImageView mUserPhoto;
-        ImageView sharedPhoto;
-        VideoView videoView;
+        LinearLayout mMediaLayout;
         WebView previewWebsite;
 
         MyViewHolder(CardView v, int type) {
@@ -133,8 +154,7 @@ class TweetStreamRecyclerAdapter extends RecyclerView.Adapter {
                 userHandle = (TextView) v.findViewById(R.id.user_twitter_handle);
                 userName = (TextView) v.findViewById(R.id.user_twitter_name);
                 mUserPhoto = (ImageView) v.findViewById(R.id.user_photo);
-                sharedPhoto = (ImageView) v.findViewById(R.id.shared_photo);
-                videoView = (VideoView) v.findViewById(R.id.shared_video);
+                mMediaLayout = (LinearLayout) v.findViewById(R.id.media_layout);
                 status = (TextView) v.findViewById(R.id.status);
                 reTweetCount = (TextView) v.findViewById(R.id.retweet_count);
                 favCount = (TextView) v.findViewById(R.id.fav_count);

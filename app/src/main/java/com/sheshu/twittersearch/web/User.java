@@ -1,537 +1,519 @@
 package com.sheshu.twittersearch.web;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User implements Parcelable {
-    public final static Creator<User> CREATOR = new Creator<User>() {
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public User createFromParcel(Parcel in) {
-            User instance = new User();
-            instance.profileSidebarFillColor = ((String) in.readValue((String.class.getClassLoader())));
-            instance.profileSidebarBorderColor = ((String) in.readValue((String.class.getClassLoader())));
-            instance.profileBackgroundTile = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.name = ((String) in.readValue((String.class.getClassLoader())));
-            instance.profileImageUrl = ((String) in.readValue((String.class.getClassLoader())));
-            instance.createdAt = ((String) in.readValue((String.class.getClassLoader())));
-            instance.location = ((String) in.readValue((String.class.getClassLoader())));
-            instance.followRequestSent = ((Object) in.readValue((Object.class.getClassLoader())));
-            instance.profileLinkColor = ((String) in.readValue((String.class.getClassLoader())));
-            instance.isTranslator = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.idStr = ((String) in.readValue((String.class.getClassLoader())));
-            instance.entities = ((Entities_) in.readValue((Entities_.class.getClassLoader())));
-            instance.defaultProfile = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.contributorsEnabled = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.favouritesCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.url = ((String) in.readValue((String.class.getClassLoader())));
-            instance.profileImageUrlHttps = ((String) in.readValue((String.class.getClassLoader())));
-            instance.utcOffset = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.id = ((Long) in.readValue((Long.class.getClassLoader())));
-            instance.profileUseBackgroundImage = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.listedCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.profileTextColor = ((String) in.readValue((String.class.getClassLoader())));
-            instance.lang = ((String) in.readValue((String.class.getClassLoader())));
-            instance.followersCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance._protected = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.notifications = ((Object) in.readValue((Object.class.getClassLoader())));
-            instance.profileBackgroundImageUrlHttps = ((String) in.readValue((String.class.getClassLoader())));
-            instance.profileBackgroundColor = ((String) in.readValue((String.class.getClassLoader())));
-            instance.verified = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.geoEnabled = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.timeZone = ((String) in.readValue((String.class.getClassLoader())));
-            instance.description = ((String) in.readValue((String.class.getClassLoader())));
-            instance.defaultProfileImage = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.profileBackgroundImageUrl = ((String) in.readValue((String.class.getClassLoader())));
-            instance.statusesCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.friendsCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.following = ((Object) in.readValue((Object.class.getClassLoader())));
-            instance.showAllInlineMedia = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-            instance.screenName = ((String) in.readValue((String.class.getClassLoader())));
-            return instance;
-        }
-
-        public User[] newArray(int size) {
-            return (new User[size]);
-        }
-    };
-    @SerializedName("profile_sidebar_fill_color")
-    @Expose
-    private String profileSidebarFillColor;
-    @SerializedName("profile_sidebar_border_color")
-    @Expose
-    private String profileSidebarBorderColor;
-    @SerializedName("profile_background_tile")
-    @Expose
-    private Boolean profileBackgroundTile;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("profile_image_url")
-    @Expose
-    private String profileImageUrl;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-    @SerializedName("location")
-    @Expose
-    private String location;
-    @SerializedName("follow_request_sent")
-    @Expose
-    private Object followRequestSent;
-    @SerializedName("profile_link_color")
-    @Expose
-    private String profileLinkColor;
-    @SerializedName("is_translator")
-    @Expose
-    private Boolean isTranslator;
-    @SerializedName("id_str")
-    @Expose
-    private String idStr;
-    @SerializedName("entities")
-    @Expose
-    private Entities_ entities;
-    @SerializedName("default_profile")
-    @Expose
-    private Boolean defaultProfile;
-    @SerializedName("contributors_enabled")
-    @Expose
-    private Boolean contributorsEnabled;
-    @SerializedName("favourites_count")
-    @Expose
-    private Integer favouritesCount;
-    @SerializedName("url")
-    @Expose
-    private String url;
-    @SerializedName("profile_image_url_https")
-    @Expose
-    private String profileImageUrlHttps;
-    @SerializedName("utc_offset")
-    @Expose
-    private Integer utcOffset;
-    @SerializedName("id")
-    @Expose
-    private Long id;
-    @SerializedName("profile_use_background_image")
-    @Expose
-    private Boolean profileUseBackgroundImage;
-    @SerializedName("listed_count")
-    @Expose
-    private Integer listedCount;
-    @SerializedName("profile_text_color")
-    @Expose
-    private String profileTextColor;
-    @SerializedName("lang")
-    @Expose
-    private String lang;
-    @SerializedName("followers_count")
-    @Expose
-    private Integer followersCount;
-    @SerializedName("protected")
-    @Expose
-    private Boolean _protected;
-    @SerializedName("notifications")
-    @Expose
-    private Object notifications;
-    @SerializedName("profile_background_image_url_https")
-    @Expose
-    private String profileBackgroundImageUrlHttps;
-    @SerializedName("profile_background_color")
-    @Expose
-    private String profileBackgroundColor;
-    @SerializedName("verified")
-    @Expose
-    private Boolean verified;
-    @SerializedName("geo_enabled")
-    @Expose
-    private Boolean geoEnabled;
-    @SerializedName("time_zone")
-    @Expose
-    private String timeZone;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("default_profile_image")
-    @Expose
-    private Boolean defaultProfileImage;
-    @SerializedName("profile_background_image_url")
-    @Expose
-    private String profileBackgroundImageUrl;
-    @SerializedName("statuses_count")
-    @Expose
-    private Integer statusesCount;
-    @SerializedName("friends_count")
-    @Expose
-    private Integer friendsCount;
-    @SerializedName("following")
-    @Expose
-    private Object following;
-    @SerializedName("show_all_inline_media")
-    @Expose
-    private Boolean showAllInlineMedia;
-    @SerializedName("screen_name")
-    @Expose
-    private String screenName;
-
-    public String getProfileSidebarFillColor() {
-        return profileSidebarFillColor;
-    }
-
-    public void setProfileSidebarFillColor(String profileSidebarFillColor) {
-        this.profileSidebarFillColor = profileSidebarFillColor;
-    }
-
-    public String getProfileSidebarBorderColor() {
-        return profileSidebarBorderColor;
-    }
-
-    public void setProfileSidebarBorderColor(String profileSidebarBorderColor) {
-        this.profileSidebarBorderColor = profileSidebarBorderColor;
-    }
-
-    public Boolean getProfileBackgroundTile() {
-        return profileBackgroundTile;
-    }
-
-    public void setProfileBackgroundTile(Boolean profileBackgroundTile) {
-        this.profileBackgroundTile = profileBackgroundTile;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getProfileImageUrl() {
-        return profileImageUrl;
-    }
-
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Object getFollowRequestSent() {
-        return followRequestSent;
-    }
-
-    public void setFollowRequestSent(Object followRequestSent) {
-        this.followRequestSent = followRequestSent;
-    }
-
-    public String getProfileLinkColor() {
-        return profileLinkColor;
-    }
-
-    public void setProfileLinkColor(String profileLinkColor) {
-        this.profileLinkColor = profileLinkColor;
-    }
-
-    public Boolean getIsTranslator() {
-        return isTranslator;
-    }
-
-    public void setIsTranslator(Boolean isTranslator) {
-        this.isTranslator = isTranslator;
-    }
-
-    public String getIdStr() {
-        return idStr;
-    }
-
-    public void setIdStr(String idStr) {
-        this.idStr = idStr;
-    }
-
-    public Entities_ getEntities() {
-        return entities;
-    }
-
-    public void setEntities(Entities_ entities) {
-        this.entities = entities;
-    }
-
-    public Boolean getDefaultProfile() {
-        return defaultProfile;
-    }
-
-    public void setDefaultProfile(Boolean defaultProfile) {
-        this.defaultProfile = defaultProfile;
-    }
-
-    public Boolean getContributorsEnabled() {
-        return contributorsEnabled;
-    }
-
-    public void setContributorsEnabled(Boolean contributorsEnabled) {
-        this.contributorsEnabled = contributorsEnabled;
-    }
-
-    public Integer getFavouritesCount() {
-        return favouritesCount;
-    }
-
-    public void setFavouritesCount(Integer favouritesCount) {
-        this.favouritesCount = favouritesCount;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getProfileImageUrlHttps() {
-        return profileImageUrlHttps;
-    }
-
-    public void setProfileImageUrlHttps(String profileImageUrlHttps) {
-        this.profileImageUrlHttps = profileImageUrlHttps;
-    }
-
-    public Integer getUtcOffset() {
-        return utcOffset;
-    }
-
-    public void setUtcOffset(Integer utcOffset) {
-        this.utcOffset = utcOffset;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Boolean getProfileUseBackgroundImage() {
-        return profileUseBackgroundImage;
-    }
-
-    public void setProfileUseBackgroundImage(Boolean profileUseBackgroundImage) {
-        this.profileUseBackgroundImage = profileUseBackgroundImage;
-    }
-
-    public Integer getListedCount() {
-        return listedCount;
-    }
-
-    public void setListedCount(Integer listedCount) {
-        this.listedCount = listedCount;
-    }
-
-    public String getProfileTextColor() {
-        return profileTextColor;
-    }
-
-    public void setProfileTextColor(String profileTextColor) {
-        this.profileTextColor = profileTextColor;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public Integer getFollowersCount() {
-        return followersCount;
-    }
-
-    public void setFollowersCount(Integer followersCount) {
-        this.followersCount = followersCount;
-    }
-
-    public Boolean getProtected() {
-        return _protected;
-    }
-
-    public void setProtected(Boolean _protected) {
-        this._protected = _protected;
-    }
-
-    public Object getNotifications() {
-        return notifications;
-    }
-
-    public void setNotifications(Object notifications) {
-        this.notifications = notifications;
-    }
-
-    public String getProfileBackgroundImageUrlHttps() {
-        return profileBackgroundImageUrlHttps;
-    }
-
-    public void setProfileBackgroundImageUrlHttps(String profileBackgroundImageUrlHttps) {
-        this.profileBackgroundImageUrlHttps = profileBackgroundImageUrlHttps;
-    }
-
-    public String getProfileBackgroundColor() {
-        return profileBackgroundColor;
-    }
-
-    public void setProfileBackgroundColor(String profileBackgroundColor) {
-        this.profileBackgroundColor = profileBackgroundColor;
-    }
-
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
-
-    public Boolean getGeoEnabled() {
-        return geoEnabled;
-    }
-
-    public void setGeoEnabled(Boolean geoEnabled) {
-        this.geoEnabled = geoEnabled;
-    }
-
-    public String getTimeZone() {
-        return timeZone;
-    }
-
-    public void setTimeZone(String timeZone) {
-        this.timeZone = timeZone;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Boolean getDefaultProfileImage() {
-        return defaultProfileImage;
-    }
-
-    public void setDefaultProfileImage(Boolean defaultProfileImage) {
-        this.defaultProfileImage = defaultProfileImage;
-    }
-
-    public String getProfileBackgroundImageUrl() {
-        return profileBackgroundImageUrl;
-    }
-
-    public void setProfileBackgroundImageUrl(String profileBackgroundImageUrl) {
-        this.profileBackgroundImageUrl = profileBackgroundImageUrl;
-    }
-
-    public Integer getStatusesCount() {
-        return statusesCount;
-    }
-
-    public void setStatusesCount(Integer statusesCount) {
-        this.statusesCount = statusesCount;
-    }
-
-    public Integer getFriendsCount() {
-        return friendsCount;
-    }
-
-    public void setFriendsCount(Integer friendsCount) {
-        this.friendsCount = friendsCount;
-    }
-
-    public Object getFollowing() {
-        return following;
-    }
-
-    public void setFollowing(Object following) {
-        this.following = following;
-    }
-
-    public Boolean getShowAllInlineMedia() {
-        return showAllInlineMedia;
-    }
-
-    public void setShowAllInlineMedia(Boolean showAllInlineMedia) {
-        this.showAllInlineMedia = showAllInlineMedia;
-    }
-
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
-    }
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(profileSidebarFillColor);
-        dest.writeValue(profileSidebarBorderColor);
-        dest.writeValue(profileBackgroundTile);
-        dest.writeValue(name);
-        dest.writeValue(profileImageUrl);
-        dest.writeValue(createdAt);
-        dest.writeValue(location);
-        dest.writeValue(followRequestSent);
-        dest.writeValue(profileLinkColor);
-        dest.writeValue(isTranslator);
-        dest.writeValue(idStr);
-        dest.writeValue(entities);
-        dest.writeValue(defaultProfile);
-        dest.writeValue(contributorsEnabled);
-        dest.writeValue(favouritesCount);
-        dest.writeValue(url);
-        dest.writeValue(profileImageUrlHttps);
-        dest.writeValue(utcOffset);
-        dest.writeValue(id);
-        dest.writeValue(profileUseBackgroundImage);
-        dest.writeValue(listedCount);
-        dest.writeValue(profileTextColor);
-        dest.writeValue(lang);
-        dest.writeValue(followersCount);
-        dest.writeValue(_protected);
-        dest.writeValue(notifications);
-        dest.writeValue(profileBackgroundImageUrlHttps);
-        dest.writeValue(profileBackgroundColor);
-        dest.writeValue(verified);
-        dest.writeValue(geoEnabled);
-        dest.writeValue(timeZone);
-        dest.writeValue(description);
-        dest.writeValue(defaultProfileImage);
-        dest.writeValue(profileBackgroundImageUrl);
-        dest.writeValue(statusesCount);
-        dest.writeValue(friendsCount);
-        dest.writeValue(following);
-        dest.writeValue(showAllInlineMedia);
-        dest.writeValue(screenName);
-    }
-
-    public int describeContents() {
-        return 0;
-    }
+
+public class User{
+
+	@SerializedName("utc_offset")
+	private int utcOffset;
+
+	@SerializedName("friends_count")
+	private int friendsCount;
+
+	@SerializedName("profile_image_url_https")
+	private String profileImageUrlHttps;
+
+	@SerializedName("listed_count")
+	private int listedCount;
+
+	@SerializedName("profile_background_image_url")
+	private Object profileBackgroundImageUrl;
+
+	@SerializedName("default_profile_image")
+	private boolean defaultProfileImage;
+
+	@SerializedName("favourites_count")
+	private int favouritesCount;
+
+	@SerializedName("description")
+	private String description;
+
+	@SerializedName("created_at")
+	private String createdAt;
+
+	@SerializedName("is_translator")
+	private boolean isTranslator;
+
+	@SerializedName("profile_background_image_url_https")
+	private Object profileBackgroundImageUrlHttps;
+
+	@SerializedName("protected")
+	private boolean jsonMemberProtected;
+
+	@SerializedName("screen_name")
+	private String screenName;
+
+	@SerializedName("id_str")
+	private String idStr;
+
+	@SerializedName("profile_link_color")
+	private String profileLinkColor;
+
+	@SerializedName("is_translation_enabled")
+	private boolean isTranslationEnabled;
+
+	@SerializedName("translator_type")
+	private String translatorType;
+
+	@SerializedName("id")
+	private long id;
+
+	@SerializedName("geo_enabled")
+	private boolean geoEnabled;
+
+	@SerializedName("profile_background_color")
+	private String profileBackgroundColor;
+
+	@SerializedName("lang")
+	private String lang;
+
+	@SerializedName("has_extended_profile")
+	private boolean hasExtendedProfile;
+
+	@SerializedName("profile_sidebar_border_color")
+	private String profileSidebarBorderColor;
+
+	@SerializedName("profile_text_color")
+	private String profileTextColor;
+
+	@SerializedName("verified")
+	private boolean verified;
+
+	@SerializedName("profile_image_url")
+	private String profileImageUrl;
+
+	@SerializedName("time_zone")
+	private String timeZone;
+
+	@SerializedName("url")
+	private Object url;
+
+	@SerializedName("contributors_enabled")
+	private boolean contributorsEnabled;
+
+	@SerializedName("profile_background_tile")
+	private boolean profileBackgroundTile;
+
+	@SerializedName("profile_banner_url")
+	private String profileBannerUrl;
+
+	@SerializedName("entities")
+	private Entities entities;
+
+	@SerializedName("statuses_count")
+	private int statusesCount;
+
+	@SerializedName("follow_request_sent")
+	private Object followRequestSent;
+
+	@SerializedName("followers_count")
+	private int followersCount;
+
+	@SerializedName("profile_use_background_image")
+	private boolean profileUseBackgroundImage;
+
+	@SerializedName("default_profile")
+	private boolean defaultProfile;
+
+	@SerializedName("following")
+	private Object following;
+
+	@SerializedName("name")
+	private String name;
+
+	@SerializedName("location")
+	private String location;
+
+	@SerializedName("profile_sidebar_fill_color")
+	private String profileSidebarFillColor;
+
+	@SerializedName("notifications")
+	private Object notifications;
+
+	public void setUtcOffset(int utcOffset){
+		this.utcOffset = utcOffset;
+	}
+
+	public int getUtcOffset(){
+		return utcOffset;
+	}
+
+	public void setFriendsCount(int friendsCount){
+		this.friendsCount = friendsCount;
+	}
+
+	public int getFriendsCount(){
+		return friendsCount;
+	}
+
+	public void setProfileImageUrlHttps(String profileImageUrlHttps){
+		this.profileImageUrlHttps = profileImageUrlHttps;
+	}
+
+	public String getProfileImageUrlHttps(){
+		return profileImageUrlHttps;
+	}
+
+	public void setListedCount(int listedCount){
+		this.listedCount = listedCount;
+	}
+
+	public int getListedCount(){
+		return listedCount;
+	}
+
+	public void setProfileBackgroundImageUrl(Object profileBackgroundImageUrl){
+		this.profileBackgroundImageUrl = profileBackgroundImageUrl;
+	}
+
+	public Object getProfileBackgroundImageUrl(){
+		return profileBackgroundImageUrl;
+	}
+
+	public void setDefaultProfileImage(boolean defaultProfileImage){
+		this.defaultProfileImage = defaultProfileImage;
+	}
+
+	public boolean isDefaultProfileImage(){
+		return defaultProfileImage;
+	}
+
+	public void setFavouritesCount(int favouritesCount){
+		this.favouritesCount = favouritesCount;
+	}
+
+	public int getFavouritesCount(){
+		return favouritesCount;
+	}
+
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public String getDescription(){
+		return description;
+	}
+
+	public void setCreatedAt(String createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedAt(){
+		return createdAt;
+	}
+
+	public void setIsTranslator(boolean isTranslator){
+		this.isTranslator = isTranslator;
+	}
+
+	public boolean isIsTranslator(){
+		return isTranslator;
+	}
+
+	public void setProfileBackgroundImageUrlHttps(Object profileBackgroundImageUrlHttps){
+		this.profileBackgroundImageUrlHttps = profileBackgroundImageUrlHttps;
+	}
+
+	public Object getProfileBackgroundImageUrlHttps(){
+		return profileBackgroundImageUrlHttps;
+	}
+
+	public void setJsonMemberProtected(boolean jsonMemberProtected){
+		this.jsonMemberProtected = jsonMemberProtected;
+	}
+
+	public boolean isJsonMemberProtected(){
+		return jsonMemberProtected;
+	}
+
+	public void setScreenName(String screenName){
+		this.screenName = screenName;
+	}
+
+	public String getScreenName(){
+		return screenName;
+	}
+
+	public void setIdStr(String idStr){
+		this.idStr = idStr;
+	}
+
+	public String getIdStr(){
+		return idStr;
+	}
+
+	public void setProfileLinkColor(String profileLinkColor){
+		this.profileLinkColor = profileLinkColor;
+	}
+
+	public String getProfileLinkColor(){
+		return profileLinkColor;
+	}
+
+	public void setIsTranslationEnabled(boolean isTranslationEnabled){
+		this.isTranslationEnabled = isTranslationEnabled;
+	}
+
+	public boolean isIsTranslationEnabled(){
+		return isTranslationEnabled;
+	}
+
+	public void setTranslatorType(String translatorType){
+		this.translatorType = translatorType;
+	}
+
+	public String getTranslatorType(){
+		return translatorType;
+	}
+
+	public void setId(long id){
+		this.id = id;
+	}
+
+	public long getId(){
+		return id;
+	}
+
+	public void setGeoEnabled(boolean geoEnabled){
+		this.geoEnabled = geoEnabled;
+	}
+
+	public boolean isGeoEnabled(){
+		return geoEnabled;
+	}
+
+	public void setProfileBackgroundColor(String profileBackgroundColor){
+		this.profileBackgroundColor = profileBackgroundColor;
+	}
+
+	public String getProfileBackgroundColor(){
+		return profileBackgroundColor;
+	}
+
+	public void setLang(String lang){
+		this.lang = lang;
+	}
+
+	public String getLang(){
+		return lang;
+	}
+
+	public void setHasExtendedProfile(boolean hasExtendedProfile){
+		this.hasExtendedProfile = hasExtendedProfile;
+	}
+
+	public boolean isHasExtendedProfile(){
+		return hasExtendedProfile;
+	}
+
+	public void setProfileSidebarBorderColor(String profileSidebarBorderColor){
+		this.profileSidebarBorderColor = profileSidebarBorderColor;
+	}
+
+	public String getProfileSidebarBorderColor(){
+		return profileSidebarBorderColor;
+	}
+
+	public void setProfileTextColor(String profileTextColor){
+		this.profileTextColor = profileTextColor;
+	}
+
+	public String getProfileTextColor(){
+		return profileTextColor;
+	}
+
+	public void setVerified(boolean verified){
+		this.verified = verified;
+	}
+
+	public boolean isVerified(){
+		return verified;
+	}
+
+	public void setProfileImageUrl(String profileImageUrl){
+		this.profileImageUrl = profileImageUrl;
+	}
+
+	public String getProfileImageUrl(){
+		return profileImageUrl;
+	}
+
+	public void setTimeZone(String timeZone){
+		this.timeZone = timeZone;
+	}
+
+	public String getTimeZone(){
+		return timeZone;
+	}
+
+	public void setUrl(Object url){
+		this.url = url;
+	}
+
+	public Object getUrl(){
+		return url;
+	}
+
+	public void setContributorsEnabled(boolean contributorsEnabled){
+		this.contributorsEnabled = contributorsEnabled;
+	}
+
+	public boolean isContributorsEnabled(){
+		return contributorsEnabled;
+	}
+
+	public void setProfileBackgroundTile(boolean profileBackgroundTile){
+		this.profileBackgroundTile = profileBackgroundTile;
+	}
+
+	public boolean isProfileBackgroundTile(){
+		return profileBackgroundTile;
+	}
+
+	public void setProfileBannerUrl(String profileBannerUrl){
+		this.profileBannerUrl = profileBannerUrl;
+	}
+
+	public String getProfileBannerUrl(){
+		return profileBannerUrl;
+	}
+
+	public void setEntities(Entities entities){
+		this.entities = entities;
+	}
+
+	public Entities getEntities(){
+		return entities;
+	}
+
+	public void setStatusesCount(int statusesCount){
+		this.statusesCount = statusesCount;
+	}
+
+	public int getStatusesCount(){
+		return statusesCount;
+	}
+
+	public void setFollowRequestSent(Object followRequestSent){
+		this.followRequestSent = followRequestSent;
+	}
+
+	public Object getFollowRequestSent(){
+		return followRequestSent;
+	}
+
+	public void setFollowersCount(int followersCount){
+		this.followersCount = followersCount;
+	}
+
+	public int getFollowersCount(){
+		return followersCount;
+	}
+
+	public void setProfileUseBackgroundImage(boolean profileUseBackgroundImage){
+		this.profileUseBackgroundImage = profileUseBackgroundImage;
+	}
+
+	public boolean isProfileUseBackgroundImage(){
+		return profileUseBackgroundImage;
+	}
+
+	public void setDefaultProfile(boolean defaultProfile){
+		this.defaultProfile = defaultProfile;
+	}
+
+	public boolean isDefaultProfile(){
+		return defaultProfile;
+	}
+
+	public void setFollowing(Object following){
+		this.following = following;
+	}
+
+	public Object getFollowing(){
+		return following;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setLocation(String location){
+		this.location = location;
+	}
+
+	public String getLocation(){
+		return location;
+	}
+
+	public void setProfileSidebarFillColor(String profileSidebarFillColor){
+		this.profileSidebarFillColor = profileSidebarFillColor;
+	}
+
+	public String getProfileSidebarFillColor(){
+		return profileSidebarFillColor;
+	}
+
+	public void setNotifications(Object notifications){
+		this.notifications = notifications;
+	}
+
+	public Object getNotifications(){
+		return notifications;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"User{" + 
+			"utc_offset = '" + utcOffset + '\'' + 
+			",friends_count = '" + friendsCount + '\'' + 
+			",profile_image_url_https = '" + profileImageUrlHttps + '\'' + 
+			",listed_count = '" + listedCount + '\'' + 
+			",profile_background_image_url = '" + profileBackgroundImageUrl + '\'' + 
+			",default_profile_image = '" + defaultProfileImage + '\'' + 
+			",favourites_count = '" + favouritesCount + '\'' + 
+			",description = '" + description + '\'' + 
+			",created_at = '" + createdAt + '\'' + 
+			",is_translator = '" + isTranslator + '\'' + 
+			",profile_background_image_url_https = '" + profileBackgroundImageUrlHttps + '\'' + 
+			",protected = '" + jsonMemberProtected + '\'' + 
+			",screen_name = '" + screenName + '\'' + 
+			",id_str = '" + idStr + '\'' + 
+			",profile_link_color = '" + profileLinkColor + '\'' + 
+			",is_translation_enabled = '" + isTranslationEnabled + '\'' + 
+			",translator_type = '" + translatorType + '\'' + 
+			",id = '" + id + '\'' + 
+			",geo_enabled = '" + geoEnabled + '\'' + 
+			",profile_background_color = '" + profileBackgroundColor + '\'' + 
+			",lang = '" + lang + '\'' + 
+			",has_extended_profile = '" + hasExtendedProfile + '\'' + 
+			",profile_sidebar_border_color = '" + profileSidebarBorderColor + '\'' + 
+			",profile_text_color = '" + profileTextColor + '\'' + 
+			",verified = '" + verified + '\'' + 
+			",profile_image_url = '" + profileImageUrl + '\'' + 
+			",time_zone = '" + timeZone + '\'' + 
+			",url = '" + url + '\'' + 
+			",contributors_enabled = '" + contributorsEnabled + '\'' + 
+			",profile_background_tile = '" + profileBackgroundTile + '\'' + 
+			",profile_banner_url = '" + profileBannerUrl + '\'' + 
+			",entities = '" + entities + '\'' + 
+			",statuses_count = '" + statusesCount + '\'' + 
+			",follow_request_sent = '" + followRequestSent + '\'' + 
+			",followers_count = '" + followersCount + '\'' + 
+			",profile_use_background_image = '" + profileUseBackgroundImage + '\'' + 
+			",default_profile = '" + defaultProfile + '\'' + 
+			",following = '" + following + '\'' + 
+			",name = '" + name + '\'' + 
+			",location = '" + location + '\'' + 
+			",profile_sidebar_fill_color = '" + profileSidebarFillColor + '\'' + 
+			",notifications = '" + notifications + '\'' + 
+			"}";
+		}
 }

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="?attr/actionBarSize"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              app:layout_behavior="@string/appbar_scrolling_view_behavior"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/custom_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <CheckBox
+            android:id="@+id/checkbox_exact"
+            style="@style/CheckedTextViewStyle"
+            android:text="Exact"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_safe"
+            style="@style/CheckedTextViewStyle"
+            android:text="safe"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_media"
+            style="@style/CheckedTextViewStyle"
+            android:text="Media"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_native_video"
+            style="@style/CheckedTextViewStyle"
+            android:text="Native Video"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/custom_search_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/checkbox_not_from_retweets"
+            style="@style/CheckedTextViewStyle"
+            android:text="Not from Retweets"
+            android:visibility="gone"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_periscope"
+            style="@style/CheckedTextViewStyle"
+            android:text="Periscope"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_vine"
+            style="@style/CheckedTextViewStyle"
+            android:text="Vine"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_images"
+            style="@style/CheckedTextViewStyle"
+            android:text="Images"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/custom_search_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <CheckBox
+            android:id="@+id/checkbox_twimg"
+            style="@style/CheckedTextViewStyle"
+            android:text="Twimg"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_no_scary"
+            style="@style/CheckedTextViewStyle"
+            android:text="No Scary"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_positive"
+            style="@style/CheckedTextViewStyle"
+            android:text="+ve"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_negative"
+            style="@style/CheckedTextViewStyle"
+            android:text="-ve"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/custom_search_layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_doesnt_contain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Does not contain"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_from_account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="From Account"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_from_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Fron List"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_to_account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="To Account"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <CheckBox
+            android:id="@+id/checkbox_since_date"
+            style="@style/CheckedTextViewStyle"
+            android:text="Since"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_until_date"
+            style="@style/CheckedTextViewStyle"
+            android:text="Until"/>
+
+    </LinearLayout>
+
+</LinearLayout>

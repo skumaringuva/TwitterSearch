@@ -1,6 +1,6 @@
 package com.sheshu.twittersearch.controller;
 
-import com.sheshu.twittersearch.web.Status;
+import com.sheshu.twittersearch.web.StatusesItem;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface TwitterNotifier {
     public void onAuthenticated(boolean isSuccess);
-    public void searchResults(List<Status> statuses);
+    public void searchResults(List<StatusesItem> statuses);
     public void searchError();
 }

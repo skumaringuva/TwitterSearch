@@ -1,58 +1,52 @@
 package com.sheshu.twittersearch.web;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
-public class Tweets implements Parcelable {
-    public final static Creator<Tweets> CREATOR = new Creator<Tweets>() {
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Tweets createFromParcel(Parcel in) {
-            Tweets instance = new Tweets();
-            in.readList(instance.statuses, (Status.class.getClassLoader()));
-            instance.searchMetadata = ((SearchMetadata) in.readValue((SearchMetadata.class.getClassLoader())));
-            return instance;
-        }
+import com.google.gson.annotations.SerializedName;
 
-        public Tweets[] newArray(int size) {
-            return (new Tweets[size]);
-        }
-    };
-    @SerializedName("statuses")
-    @Expose
-    private List<Status> statuses = null;
-    @SerializedName("search_metadata")
-    @Expose
-    private SearchMetadata searchMetadata;
 
-    public List<Status> getStatuses() {
-        return statuses;
-    }
+public class Tweets{
 
-    public void setStatuses(List<Status> statuses) {
-        this.statuses = statuses;
-    }
+	@SerializedName("")
+	private JsonMember jsonMember;
 
-    public SearchMetadata getSearchMetadata() {
-        return searchMetadata;
-    }
+	@SerializedName("statuses")
+	private List<StatusesItem> statuses;
 
-    public void setSearchMetadata(SearchMetadata searchMetadata) {
-        this.searchMetadata = searchMetadata;
-    }
+	@SerializedName("search_metadata")
+	private SearchMetadata searchMetadata;
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(statuses);
-        dest.writeValue(searchMetadata);
-    }
+	public void setJsonMember(JsonMember jsonMember){
+		this.jsonMember = jsonMember;
+	}
 
-    public int describeContents() {
-        return 0;
-    }
+	public JsonMember getJsonMember(){
+		return jsonMember;
+	}
+
+	public void setStatuses(List<StatusesItem> statuses){
+		this.statuses = statuses;
+	}
+
+	public List<StatusesItem> getStatuses(){
+		return statuses;
+	}
+
+	public void setSearchMetadata(SearchMetadata searchMetadata){
+		this.searchMetadata = searchMetadata;
+	}
+
+	public SearchMetadata getSearchMetadata(){
+		return searchMetadata;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"Tweets{" + 
+			" = '" + jsonMember + '\'' + 
+			",statuses = '" + statuses + '\'' + 
+			",search_metadata = '" + searchMetadata + '\'' + 
+			"}";
+		}
 }

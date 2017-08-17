@@ -1,45 +1,28 @@
 package com.sheshu.twittersearch.web;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
-public class Url implements Parcelable {
-    public final static Creator<Url> CREATOR = new Creator<Url>() {
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Url createFromParcel(Parcel in) {
-            Url instance = new Url();
-            in.readList(instance.urls, (com.sheshu.twittersearch.web.Url_.class.getClassLoader()));
-            return instance;
-        }
+import com.google.gson.annotations.SerializedName;
 
-        public Url[] newArray(int size) {
-            return (new Url[size]);
-        }
-    };
-    @SerializedName("urls")
-    @Expose
-    private List<Url_> urls = null;
 
-    public List<Url_> getUrls() {
-        return urls;
-    }
+public class Url{
 
-    public void setUrls(List<Url_> urls) {
-        this.urls = urls;
-    }
+	@SerializedName("urls")
+	private List<UrlsItem> urls;
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(urls);
-    }
+	public void setUrls(List<UrlsItem> urls){
+		this.urls = urls;
+	}
 
-    public int describeContents() {
-        return 0;
-    }
+	public List<UrlsItem> getUrls(){
+		return urls;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"Url{" + 
+			"urls = '" + urls + '\'' + 
+			"}";
+		}
 }

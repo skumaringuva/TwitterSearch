@@ -1,147 +1,123 @@
 package com.sheshu.twittersearch.web;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SearchMetadata implements Parcelable {
-    public final static Creator<SearchMetadata> CREATOR = new Creator<SearchMetadata>() {
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public SearchMetadata createFromParcel(Parcel in) {
-            SearchMetadata instance = new SearchMetadata();
-            instance.maxId = ((Long) in.readValue((Long.class.getClassLoader())));
-            instance.sinceId = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.refreshUrl = ((String) in.readValue((String.class.getClassLoader())));
-            instance.nextResults = ((String) in.readValue((String.class.getClassLoader())));
-            instance.count = ((Integer) in.readValue((Integer.class.getClassLoader())));
-            instance.completedIn = ((Double) in.readValue((Double.class.getClassLoader())));
-            instance.sinceIdStr = ((String) in.readValue((String.class.getClassLoader())));
-            instance.query = ((String) in.readValue((String.class.getClassLoader())));
-            instance.maxIdStr = ((String) in.readValue((String.class.getClassLoader())));
-            return instance;
-        }
 
-        public SearchMetadata[] newArray(int size) {
-            return (new SearchMetadata[size]);
-        }
-    };
-    @SerializedName("max_id")
-    @Expose
-    private Long maxId;
-    @SerializedName("since_id")
-    @Expose
-    private Integer sinceId;
-    @SerializedName("refresh_url")
-    @Expose
-    private String refreshUrl;
-    @SerializedName("next_results")
-    @Expose
-    private String nextResults;
-    @SerializedName("count")
-    @Expose
-    private Integer count;
-    @SerializedName("completed_in")
-    @Expose
-    private Double completedIn;
-    @SerializedName("since_id_str")
-    @Expose
-    private String sinceIdStr;
-    @SerializedName("query")
-    @Expose
-    private String query;
-    @SerializedName("max_id_str")
-    @Expose
-    private String maxIdStr;
+public class SearchMetadata{
 
-    public Long getMaxId() {
-        return maxId;
-    }
+	@SerializedName("max_id_str")
+	private String maxIdStr;
 
-    public void setMaxId(Long maxId) {
-        this.maxId = maxId;
-    }
+	@SerializedName("next_results")
+	private String nextResults;
 
-    public Integer getSinceId() {
-        return sinceId;
-    }
+	@SerializedName("since_id_str")
+	private String sinceIdStr;
 
-    public void setSinceId(Integer sinceId) {
-        this.sinceId = sinceId;
-    }
+	@SerializedName("query")
+	private String query;
 
-    public String getRefreshUrl() {
-        return refreshUrl;
-    }
+	@SerializedName("count")
+	private int count;
 
-    public void setRefreshUrl(String refreshUrl) {
-        this.refreshUrl = refreshUrl;
-    }
+	@SerializedName("max_id")
+	private long maxId;
 
-    public String getNextResults() {
-        return nextResults;
-    }
+	@SerializedName("since_id")
+	private int sinceId;
 
-    public void setNextResults(String nextResults) {
-        this.nextResults = nextResults;
-    }
+	@SerializedName("completed_in")
+	private double completedIn;
 
-    public Integer getCount() {
-        return count;
-    }
+	@SerializedName("refresh_url")
+	private String refreshUrl;
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
+	public void setMaxIdStr(String maxIdStr){
+		this.maxIdStr = maxIdStr;
+	}
 
-    public Double getCompletedIn() {
-        return completedIn;
-    }
+	public String getMaxIdStr(){
+		return maxIdStr;
+	}
 
-    public void setCompletedIn(Double completedIn) {
-        this.completedIn = completedIn;
-    }
+	public void setNextResults(String nextResults){
+		this.nextResults = nextResults;
+	}
 
-    public String getSinceIdStr() {
-        return sinceIdStr;
-    }
+	public String getNextResults(){
+		return nextResults;
+	}
 
-    public void setSinceIdStr(String sinceIdStr) {
-        this.sinceIdStr = sinceIdStr;
-    }
+	public void setSinceIdStr(String sinceIdStr){
+		this.sinceIdStr = sinceIdStr;
+	}
 
-    public String getQuery() {
-        return query;
-    }
+	public String getSinceIdStr(){
+		return sinceIdStr;
+	}
 
-    public void setQuery(String query) {
-        this.query = query;
-    }
+	public void setQuery(String query){
+		this.query = query;
+	}
 
-    public String getMaxIdStr() {
-        return maxIdStr;
-    }
+	public String getQuery(){
+		return query;
+	}
 
-    public void setMaxIdStr(String maxIdStr) {
-        this.maxIdStr = maxIdStr;
-    }
+	public void setCount(int count){
+		this.count = count;
+	}
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(maxId);
-        dest.writeValue(sinceId);
-        dest.writeValue(refreshUrl);
-        dest.writeValue(nextResults);
-        dest.writeValue(count);
-        dest.writeValue(completedIn);
-        dest.writeValue(sinceIdStr);
-        dest.writeValue(query);
-        dest.writeValue(maxIdStr);
-    }
+	public int getCount(){
+		return count;
+	}
 
-    public int describeContents() {
-        return 0;
-    }
+	public void setMaxId(long maxId){
+		this.maxId = maxId;
+	}
+
+	public long getMaxId(){
+		return maxId;
+	}
+
+	public void setSinceId(int sinceId){
+		this.sinceId = sinceId;
+	}
+
+	public int getSinceId(){
+		return sinceId;
+	}
+
+	public void setCompletedIn(double completedIn){
+		this.completedIn = completedIn;
+	}
+
+	public double getCompletedIn(){
+		return completedIn;
+	}
+
+	public void setRefreshUrl(String refreshUrl){
+		this.refreshUrl = refreshUrl;
+	}
+
+	public String getRefreshUrl(){
+		return refreshUrl;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"SearchMetadata{" + 
+			"max_id_str = '" + maxIdStr + '\'' + 
+			",next_results = '" + nextResults + '\'' + 
+			",since_id_str = '" + sinceIdStr + '\'' + 
+			",query = '" + query + '\'' + 
+			",count = '" + count + '\'' + 
+			",max_id = '" + maxId + '\'' + 
+			",since_id = '" + sinceId + '\'' + 
+			",completed_in = '" + completedIn + '\'' + 
+			",refresh_url = '" + refreshUrl + '\'' + 
+			"}";
+		}
 }

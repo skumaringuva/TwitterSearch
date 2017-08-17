@@ -35,7 +35,7 @@ public class Utils {
     public static void makeImageRequest(final Context context, final ImageView imageView, final int id, final String imageUrl) {
         Picasso.with(context)
                 .load(imageUrl)
-                .networkPolicy(NetworkPolicy.OFFLINE)
+                //   .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(imageView, new Callback() {
                     @Override
                     public void onSuccess() {
